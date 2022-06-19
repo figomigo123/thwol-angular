@@ -3,6 +3,12 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] =
   [
     {
+      name: 'Statistics',
+      url: 'dashboard',
+      iconComponent: 'icon-puzzle'
+    },
+
+    {
       name: 'Users',
       
       children: [

@@ -7,7 +7,7 @@ import { LoginComponent } from './views/login/login.component';
 export const routes: Routes = [
   {
     path: 'dashboard',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboard/dashboard',
     pathMatch: 'full',
 
   },
@@ -25,7 +25,11 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+      },
       {
         path: 'users',
         loadChildren: () => import('./views/user/user.module').then(m => m.UserModule)
