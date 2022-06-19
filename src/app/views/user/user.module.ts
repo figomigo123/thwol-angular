@@ -5,27 +5,28 @@ import { NgModule } from '@angular/core';
 
 // Dropdowns Component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { CategoryComponent } from './all/category.component';
-import { CategoryRoutingModule } from './category-routing.module';
-import { AddCategoryComponent } from './add/add-category.component';
-import { UpdateCategoryComponent } from './update/update-category.component';
+
 import { IconModule } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UserRoutingModule } from './user-routing.module';
+import { AddUserComponent } from './add/add-user.component';
+import { UserComponent } from './all/user.component';
+import { UpdateUserComponent } from './update/update-user.component';
 
 
 @NgModule({
     imports: [
         CommonModule,
-        CategoryRoutingModule,
+        UserRoutingModule,
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
         NgxPaginationModule
     ],
     declarations: [
-        CategoryComponent,
-        AddCategoryComponent,
-        UpdateCategoryComponent
+        UserComponent,
+        AddUserComponent,
+        UpdateUserComponent
     ]
 })
-export class CategoryModule { }
+export class UserModule { }

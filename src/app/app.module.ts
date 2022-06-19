@@ -49,7 +49,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AlertModule } from '@coreui/angular';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -93,6 +93,7 @@ const APP_CONTAINERS = [
     ReactiveFormsModule,
     HttpClientModule,
     AlertModule,
+    NgxPaginationModule,
   ],
   providers: [
     {

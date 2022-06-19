@@ -7,9 +7,9 @@ import { UpdateService } from '../../../services/update.service';
 
 
 @Component({  
-  templateUrl: 'category.component.html',  
+  templateUrl: 'department.component.html',  
 })
-export class CategoryComponent implements OnInit {
+export class DepartmentComponent implements OnInit {
 
   constructor(private apiser: ApiService,
     public router: Router,

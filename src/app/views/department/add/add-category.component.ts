@@ -7,10 +7,10 @@ import { ApiService } from '../../../services/api.service';
 
 
 @Component({ 
-  templateUrl: './add-category.component.html'
+  templateUrl: './add-department.component.html'
   
 })
-export class AddCategoryComponent implements OnInit {
+export class AddDepartmentComponent implements OnInit {
 
   constructor(private apiSer: ApiService,   
     public router: Router,
@@ -19,7 +19,7 @@ export class AddCategoryComponent implements OnInit {
   ) { }
   public manager: User = new User;
   catClassName = "categories";
-    userClassName = "users/all";
+    userClassName = "users";
   managers: User[] = [];
   public cat: Category = new Category;
   ngOnInit() {   

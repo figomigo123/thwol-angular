@@ -8,12 +8,12 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Users',
-          url: 'users/users',
+          url: 'users',
           iconComponent: 'icon-puzzle'
         },
         {
           name: 'Add User',
-          url: 'users/adduser',
+          url: 'users/add',
           iconComponent: 'icon-puzzle'
         },
 
@@ -40,12 +40,12 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Departments',
-          url: '',
+          url: 'departments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Department',
-          url: '',
+          url: 'departments/add',
           icon: 'icon-puzzle'
         },
 
@@ -56,12 +56,12 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Sub Departments',
-          url: '',
+          url: 'departments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Sub Department',
-          url: '',
+          url: 'subdepartments/add',
           icon: 'icon-puzzle'
         },
 
@@ -72,12 +72,12 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Sub Sub Departments',
-          url: '',
+          url: 'subsubdepartments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Sub Sub Department',
-          url: '',
+          url: 'subsubdepartments/add',
           icon: 'icon-puzzle'
         },
 
@@ -87,12 +87,12 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Study Types',
-          url: '',
+          url: 'studytype',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Study Type',
-          url: '',
+          url: 'studytype/add',
           icon: 'icon-puzzle'
         },
 
@@ -103,32 +103,22 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Moduls',
-          url: '',
+          url: 'moduls',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Modul',
-          url: '',
+          url: 'Moduls/add',
           icon: 'icon-puzzle'
         },
 
       ]
     },
+
+    { name: '', attributes: { disabled: true }},
      {
-      name: 'Setting',
-
-      children: [
-        {
-          name: 'LogOut',
-          url: '',
-          icon: 'icon-puzzle'
-        },
-        {
-          name: 'Exit',
-          url: '',
-          icon: 'icon-puzzle'
-        },
-
-      ]
+       name: 'LogOut',
+       url: '',
+       icon: 'icon-puzzle'
     },
   ];

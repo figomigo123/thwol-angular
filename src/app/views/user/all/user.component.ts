@@ -4,31 +4,32 @@ import { SwallService } from '../../../services/swall.service';
 import { Category } from '../../../models/Category';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
+import { User } from 'src/app/models/User';
 
 
 @Component({  
-  templateUrl: 'category.component.html',  
+  templateUrl: 'user.component.html',  
 })
-export class CategoryComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   constructor(private apiser: ApiService,
     public router: Router,
     private updateSer: UpdateService,
     private swal: SwallService
   ) { }
-  cats: Category[] = [];
-  catClassName = "categories";
+  users: User[] = [];
+  userClassName = "users";
   pages = 1;
   currentPage = 1;
   ngOnInit(): void {   
     this.loadData();
   }
   loadData() {   
-    this.cats = [];
-    this.apiser.getPage(this.catClassName,this.page).subscribe((cats) => {
-      this.cats = cats.content;
-      this.count = cats.totalElements;
-      this.tableSize = cats.size;
+    this.users = [];
+    this.apiser.getPage(this.userClassName,this.page).subscribe((users) => {
+      this.users = users.content;
+      this.count = users.totalElements;
+      this.tableSize = users.size;
     });
   }
   page: number = 1;
@@ -46,18 +47,17 @@ export class CategoryComponent implements OnInit {
    // this.page = 1;
     this.loadData();
   }
-  update(cat: Category) {
-    this.updateSer.cat = cat;
-    this.router.navigate(['/dashboard/categories/update']);
+  update(user: User) {
+    this.updateSer.user = user;
+    this.router.navigate(['/dashboard/users/update']);
   }
 
 
- async del(cat: Category) {  
+ async del(user: User) {  
     
     const deleteItem =await this.swal.confirme('', '');    
     if (deleteItem) {
-      this.apiser.del(cat.id, this.catClassName).subscribe(d => { });
-     
+      this.apiser.del(user.id, this.userClassName).subscribe(d => { });     
       this.swal.save('Removed!');
       this.loadData();
     }

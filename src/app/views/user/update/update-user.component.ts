@@ -8,10 +8,10 @@ import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({ 
-  templateUrl: './update-category.component.html',
+  templateUrl: './update-user.component.html',
  
 })
-export class UpdateCategoryComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
     private userSer: UserService,
@@ -21,7 +21,7 @@ export class UpdateCategoryComponent implements OnInit {
     private updateSer: UpdateService) { }
   private manager: User=new User;
   managers: User[] = [];
-  userClassName = "users/all";
+  userClassName = "users";
   catClassName = "categories";
   cat: Category | undefined;
   form: any = {

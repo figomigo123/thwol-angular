@@ -28,13 +28,16 @@ export const routes: Routes = [
 
       {
         path: 'users',
-        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule)
+        loadChildren: () => import('./views/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'categories',
         loadChildren: () => import('./views/category/category.module').then(m => m.CategoryModule)
+      },
+{
+        path: 'departments',
+        loadChildren: () => import('./views/department/department.module').then(m => m.DepartmentModule)
       }
-
 
     ]
   },

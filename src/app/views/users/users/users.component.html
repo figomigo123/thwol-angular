@@ -11,21 +11,28 @@
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>userType</th>
-                            <th>Category name</th>
+                            <th>Update  -  Delete</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of users">
                             <td>{{user.firstName}}</td>
+                            <td>{{user.lastName}}</td>
+                            <td>{{user.roles[0].replace("ROLE_","")}}</td>
+                            
                             
                             <td>
                                 <button class="btn btn-link">
-                                    <span class="icon-note" style="color: red;"></span>
+                                <span cInputGroupText>
+                                    <svg cIcon name="cilPencil" style="color: red;"></svg>
+                                </span>
                                 </button>
-                            </td>
-                            <td>
+                            -
                                 <button class="btn btn-link" (click)="del(user.id)">
-                                    <span class="icon-trash" style="color: red;"></span>
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilTrash" style="color: red;"></svg>
+                                    </span>
                                 </button>
                             </td>
                         </tr>

@@ -1,0 +1,55 @@
+<div class="app-body">
+    <main class="main d-flex align-items-left">
+        <div class="container-fluid align-items-left">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card mx-4">
+                        <div class="card-body p-4">
+                            <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                                <h1>Users</h1>
+                                <p class="text-muted">Create new User</p>
+                                <div class="input-group mb-3">
+                                    <span cInputGroupText style="margin-right: 25px;">
+                                        <label>FirstName</label>
+                                    </span>
+                                    <input type="text" class="form-control" [ngModelOptions]="{standalone: true}"
+                                        name="name" [(ngModel)]="form.firstName" required>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span cInputGroupText style="margin-right: 25px;">
+                                        <label>LastName</label>
+                                    </span>
+                                    <input type="text" class="form-control" [(ngModel)]="form.lastName"
+                                        [ngModelOptions]="{standalone: true}" required>
+                                </div>
+<div class="input-group mb-3">
+    <span cInputGroupText style="margin-right: 25px;">
+        <label>E-Mail</label>
+    </span>
+    <input type="email" class="form-control" [(ngModel)]="form.email" [ngModelOptions]="{standalone: true}" required>
+</div>
+
+
+                                <div class="input-group mb-3">
+                                    <span cInputGroupText style="margin-right: 25px;">
+                                        <label>Select Role</label>
+                                    </span>
+                                    <select class="form-control" required [(ngModel)]="form.roles[0]"
+                                        [ngModelOptions]="{standalone: true}">
+                                        <option value="ROLE_PROFESSOR" selected="selected">PROFESSOR</option>
+                                        <option value="ROLE_ADMIN">ADMIN</option>
+
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </form>
+                        </div>
+                        <div class="card-footer p-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

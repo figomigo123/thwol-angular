@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-
+import { IconSetService } from '@coreui/icons-angular';
 // Dropdowns Component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { UsersRoutingModule } from './users-routing.module';
@@ -19,6 +19,7 @@ import {
     CardModule
 } from '@coreui/angular';
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
+import { IconModule } from '@coreui/icons-angular';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
         DocsComponentsModule,
         CardModule,
         ReactiveFormsModule,
+        IconModule,
     ],
     declarations: [
         UsersComponent,

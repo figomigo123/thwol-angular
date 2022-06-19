@@ -8,30 +8,33 @@
                 <table class="table table-bordered table-striped table-sm">
                     <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Manager</th>
+                            <th>LastName</th>
+                            <th>FirstName</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>Update - Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let cat of cats | paginate
+                        <tr *ngFor="let user of users | paginate
               : {
                   itemsPerPage: tableSize,
                   currentPage: page,
                   totalItems: count
                 };
           let i = index">
-                            <td>{{cat.name}}</td>
-                            
-                            <td>{{cat.manager?.firstName}}</td>
+                            <td>{{user.lastName}}</td>                            
+                            <td>{{user.firstName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.roles[0].replace("ROLE_","")}}</td>
                         <td>
-                            <button class="btn btn-link" (click)="update(cat)">
+                            <button class="btn btn-link" (click)="update(user)">
                                 <span cInputGroupText>
                                     <svg cIcon name="cilPencil" style="color: red;"></svg>
                                 </span>
                             </button>
                             -
-                            <button class="btn btn-link" (click)="del(cat)">
+                            <button class="btn btn-link" (click)="del(user)">
                                 <span cInputGroupText>
                                     <svg cIcon name="cilTrash" style="color: red;"></svg>
                                 </span>
