@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddDepartmentComponent } from './add/add-category.component';
+import { AddDepartmentComponent } from './add/add-department.component';
 import { DepartmentComponent } from './all/department.component';
 import { UpdateDepartmentComponent } from './update/update-department.component';
 
@@ -28,7 +28,7 @@ const routes: Routes = [
         data: {
           title: 'Add Department'
         }
-        
+
       },
       {
         path: 'update',
@@ -46,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DepartmentRoutingModule {}
+export class DepartmentRoutingModule { }

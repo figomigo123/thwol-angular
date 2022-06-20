@@ -6,13 +6,13 @@ import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
-import { Department } from 'src/app/models/department';
+import { Studytype } from 'src/app/models/studytype';
 
 @Component({
-  templateUrl: './update-department.component.html',
+  templateUrl: './update-studytype.component.html',
 
 })
-export class UpdateDepartmentComponent implements OnInit {
+export class UpdateStudytypeComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
     private userSer: UserService,
@@ -21,8 +21,8 @@ export class UpdateDepartmentComponent implements OnInit {
 
     private updateSer: UpdateService) { }
 
-  depClassName = "departments";
-  item: Department | undefined;
+  depClassName = "studytypes";
+  item: Studytype | undefined;
   form: any = {
     name: null
 
@@ -30,7 +30,7 @@ export class UpdateDepartmentComponent implements OnInit {
 
   ngOnInit() {
     if (this.updateSer.dep == null)
-      this.router.navigate(['/dashboard/departments']);
+      this.router.navigate(['/dashboard/studytypes']);
     this.item = this.updateSer.dep;
     // console.log(this.cat);
     this.form.name = this.item?.name;
@@ -45,9 +45,9 @@ export class UpdateDepartmentComponent implements OnInit {
 
     this.apiSer.save(this.item, this.depClassName).subscribe(
       async data => {
-        this.router.navigate(['/dashboard/departments/all']);
+        this.router.navigate(['/dashboard/studytypes/all']);
 
-        await this.swal.save('Department Updated!')
+        await this.swal.save('Studytype Updated!')
 
       },
       err => {

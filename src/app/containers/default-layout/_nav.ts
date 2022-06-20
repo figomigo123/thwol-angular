@@ -10,7 +10,7 @@ export const navItems: INavData[] =
 
     {
       name: 'Users',
-      
+
       children: [
         {
           name: 'All Users',
@@ -26,7 +26,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Categories',
-     
+
       children: [
         {
           name: 'All Categories',
@@ -42,7 +42,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Departments',
-     
+
       children: [
         {
           name: 'All Departments',
@@ -58,7 +58,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Sub Departments',
-      
+
       children: [
         {
           name: 'All Sub Departments',
@@ -74,7 +74,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Sub Sub Departments',
-      
+
       children: [
         {
           name: 'All Sub Sub Departments',
@@ -89,23 +89,23 @@ export const navItems: INavData[] =
 
       ]
     }, {
-      name: 'Study Types',     
+      name: 'Study Types',
       children: [
         {
           name: 'All Study Types',
-          url: 'studytype',
+          url: 'studytypes',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Study Type',
-          url: 'studytype/add',
+          url: 'studytypes/add',
           icon: 'icon-puzzle'
         },
 
       ]
     }, {
       name: 'Moduls',
-      
+
       children: [
         {
           name: 'All Moduls',
@@ -121,10 +121,10 @@ export const navItems: INavData[] =
       ]
     },
 
-    { name: '', attributes: { disabled: true }},
-     {
-       name: 'LogOut',
-       url: '',
-       icon: 'icon-puzzle'
+    { name: '', attributes: { disabled: true } },
+    {
+      name: 'LogOut',
+      url: '',
+      icon: 'icon-puzzle'
     },
   ];

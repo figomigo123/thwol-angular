@@ -8,25 +8,25 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { IconModule } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AddDepartmentComponent } from './add/add-department.component';
-import { DepartmentComponent } from './all/department.component';
-import { DepartmentRoutingModule } from './department-routing.module';
-import { UpdateDepartmentComponent } from './update/update-department.component';
+import { AddStudytypeComponent } from './add/add-studytype.component';
+import { StudytypeComponent } from './all/studytype.component';
+import { StudytypeRoutingModule } from './studytype-routing.module';
+import { UpdateStudytypeComponent } from './update/update-studytype.component';
 
 
 @NgModule({
     imports: [
         CommonModule,
-        DepartmentRoutingModule,
+        StudytypeRoutingModule,
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
         NgxPaginationModule
     ],
     declarations: [
-        DepartmentComponent,
-        AddDepartmentComponent,
-        UpdateDepartmentComponent
+        StudytypeComponent,
+        AddStudytypeComponent,
+        UpdateStudytypeComponent
     ]
 })
-export class DepartmentModule { }
+export class StudytypeModule { }

@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddCategoryComponent } from './add/add-category.component';
-
-import { CategoryComponent } from './all/category.component';
-import { UpdateCategoryComponent } from './update/update-category.component';
+import { AddStudytypeComponent } from './add/add-studytype.component';
+import { StudytypeComponent } from './all/studytype.component';
+import { UpdateStudytypeComponent } from './update/update-studytype.component';
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Category'
+      title: 'Studytype'
     },
     children: [
       {
@@ -18,24 +17,26 @@ const routes: Routes = [
       },
       {
         path: 'all',
-        component: CategoryComponent,
+        component: StudytypeComponent,
         data: {
-          title: 'Category'
+          title: 'Studytype'
         }
       },
       {
         path: 'add',
-        component: AddCategoryComponent,
+        component: AddStudytypeComponent,
         data: {
-          title: 'Add Category'
+          title: 'Add Studytype'
         }
+
       },
       {
         path: 'update',
-        component: UpdateCategoryComponent,
+        component: UpdateStudytypeComponent,
         data: {
-          title: 'Update Category'
+          title: 'Update Studytype'
         }
+
       }
     ]
   }
@@ -45,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CategoryRoutingModule {}
+export class StudytypeRoutingModule { }

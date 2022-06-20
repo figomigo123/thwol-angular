@@ -38,11 +38,15 @@ export const routes: Routes = [
         path: 'categories',
         loadChildren: () => import('./views/category/category.module').then(m => m.CategoryModule)
       },
-{
+      {
         path: 'departments',
         loadChildren: () => import('./views/department/department.module').then(m => m.DepartmentModule)
       }
-
+      ,
+      {
+        path: 'studytypes',
+        loadChildren: () => import('./views/studytype/studytype.module').then(m => m.StudytypeModule)
+      }
     ]
   },
   { path: '**', component: LoginComponent }
