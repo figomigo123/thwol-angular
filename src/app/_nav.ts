@@ -4,7 +4,7 @@ export const navItems: INavData[] =
   [
     {
       name: 'Users',
-      
+
       children: [
         {
           name: 'All Users',
@@ -20,7 +20,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Categories',
-     
+
       children: [
         {
           name: 'All Categories',
@@ -36,54 +36,54 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Departments',
-     
+
       children: [
         {
           name: 'All Departments',
-          url: '',
+          url: 'departments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Department',
-          url: '',
+          url: 'departments/add',
           icon: 'icon-puzzle'
         },
 
       ]
     }, {
       name: 'Sub Departments',
-      
+
       children: [
         {
           name: 'All Sub Departments',
-          url: '',
+          url: 'subdepartments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Sub Department',
-          url: '',
+          url: 'subdepartments/add',
           icon: 'icon-puzzle'
         },
 
       ]
     }, {
       name: 'Sub Sub Departments',
-      
+
       children: [
         {
           name: 'All Sub Sub Departments',
-          url: '',
+          url: 'subsubdepartments',
           icon: 'icon-puzzle'
         },
         {
           name: 'Add Sub Sub Department',
-          url: '',
+          url: 'subsubdepartments/add',
           icon: 'icon-puzzle'
         },
 
       ]
     }, {
-      name: 'Study Types',     
+      name: 'Study Types',
       children: [
         {
           name: 'All Study Types',
@@ -99,7 +99,7 @@ export const navItems: INavData[] =
       ]
     }, {
       name: 'Moduls',
-      
+
       children: [
         {
           name: 'All Moduls',

@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Subsubdepartment
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Subsubdepartment</th>
+                            <th>SubDepartment</th>
+
+                            <th>Update - Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index">
+                            <td>{{item.name}}</td>
+                            <td>{{item.subDepartmentDto.name}}</td>
+
+
+                            <td>
+                                <button class="btn btn-link" (click)="update(item)">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilPencil" style="color: red;"></svg>
+                                    </span>
+                                </button>
+                                -
+                                <button class="btn btn-link" (click)="del(item)">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilTrash" style="color: red;"></svg>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-center">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+</div>

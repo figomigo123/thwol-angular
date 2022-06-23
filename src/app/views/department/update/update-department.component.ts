@@ -6,7 +6,7 @@ import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
-import { Department } from 'src/app/models/department';
+import { Department } from 'src/app/models/Department';
 
 @Component({
   templateUrl: './update-department.component.html',

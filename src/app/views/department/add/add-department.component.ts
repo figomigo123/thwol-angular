@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
-import { Department } from '../../../models/department';
+import { Department } from '../../../models/Department';
 import { ApiService } from '../../../services/api.service';
 
 

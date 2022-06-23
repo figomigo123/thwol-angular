@@ -41,6 +41,15 @@ export const routes: Routes = [
       {
         path: 'departments',
         loadChildren: () => import('./views/department/department.module').then(m => m.DepartmentModule)
+      },
+      {
+        path: 'subdepartments',
+        loadChildren: () => import('./views/subdepartment/subdepartment.module').then(m => m.SubdepartmentModule)
+      }
+      ,
+      {
+        path: 'subsubdepartments',
+        loadChildren: () => import('./views/subsubdepartment/subsubdepartment.module').then(m => m.SubsubdepartmentModule)
       }
       ,
       {

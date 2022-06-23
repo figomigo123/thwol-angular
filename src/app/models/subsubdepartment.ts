@@ -1,7 +1,8 @@
+import { Subdepartment } from "./subdepartment";
 
 
-export class SubSubdepartment {
-   public id: string ;
-   public name: string ;
-   
+export class Subsubdepartment {
+   id!: string;
+   name!: string;
+   subDepartmentDto!: Subdepartment;
 }

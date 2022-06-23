@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
-import { Department } from '../../../models/Department';
+import { Subsubdepartment } from '../../../models/subsubdepartment';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 
 
 @Component({
-  templateUrl: 'department.component.html',
+  templateUrl: 'subsubdepartment.component.html',
 })
-export class DepartmentComponent implements OnInit {
+export class SubsubdepartmentComponent implements OnInit {
 
   constructor(private apiser: ApiService,
     public router: Router,
     private updateSer: UpdateService,
     private swal: SwallService
   ) { }
-  items: Department[] = [];
-  depClassName = "departments";
+  items: Subsubdepartment[] = [];
+  subdepClassName = "subsubdepartments";
   pages = 1;
   currentPage = 1;
   ngOnInit(): void {
@@ -25,10 +25,11 @@ export class DepartmentComponent implements OnInit {
   }
   loadData() {
     this.items = [];
-    this.apiser.getPage(this.depClassName, this.page).subscribe((items) => {
+    this.apiser.getPage(this.subdepClassName, this.page).subscribe((items) => {
       this.items = items.content;
       this.count = items.totalElements;
       this.tableSize = items.size;
+      console.log(this.items);
     });
   }
   page: number = 1;
@@ -46,17 +47,17 @@ export class DepartmentComponent implements OnInit {
     // this.page = 1;
     this.loadData();
   }
-  update(item: Department) {
-    this.updateSer.dep = item;
-    this.router.navigate(['/dashboard/departments/update']);
+  update(item: Subsubdepartment) {
+    this.updateSer.subsubdep = item;
+    this.router.navigate(['/dashboard/subsubdepartments/update']);
   }
 
 
-  async del(item: Department) {
+  async del(item: Subsubdepartment) {
 
     const deleteItem = await this.swal.confirme('', '');
     if (deleteItem) {
-      this.apiser.del(item.id, this.depClassName).subscribe(d => { });
+      this.apiser.del(item.id, this.subdepClassName).subscribe(d => { });
 
       this.swal.save('Removed!');
       this.loadData();

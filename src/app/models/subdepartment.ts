@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
+import { Department } from "./Department";
 
-export class SubDepartment {
-    id: string ;
-    name: string ;
-   
+export class Subdepartment {
+    id!: string;
+    name!: string;
+    departmentDto!: Department;
 }

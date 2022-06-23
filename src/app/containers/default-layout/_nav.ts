@@ -62,7 +62,7 @@ export const navItems: INavData[] =
       children: [
         {
           name: 'All Sub Departments',
-          url: 'departments',
+          url: 'subdepartments',
           icon: 'icon-puzzle'
         },
         {
