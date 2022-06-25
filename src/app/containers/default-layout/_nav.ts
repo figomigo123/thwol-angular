@@ -114,7 +114,7 @@ export const navItems: INavData[] =
         },
         {
           name: 'Add Modul',
-          url: 'Moduls/add',
+          url: 'moduls/add',
           icon: 'icon-puzzle'
         },
 

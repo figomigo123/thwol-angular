@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
 import { Department } from '../../../models/Department';
 import { ApiService } from '../../../services/api.service';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,18 +19,15 @@ export class AddDepartmentComponent implements OnInit {
   ) { }
   depClassName = "departments";
   depatrment: Department = new Department;
+  depName = new FormControl(this.depatrment.name, [Validators.required]);
+
   ngOnInit() {
 
   }
-  form: any = {
-    name: null,
-  };
 
   onSubmit(): void {
-    const { name } = this.form;
-    console.log(name);
-    this.depatrment.name = name;
-
+    if (this.depName.hasError('required')) return;
+    this.depatrment.name = this.depName.value;
     console.log(this.depatrment);
     this.apiSer.save(this.depatrment, this.depClassName).subscribe(
       data => {

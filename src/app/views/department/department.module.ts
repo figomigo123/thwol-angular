@@ -12,7 +12,9 @@ import { AddDepartmentComponent } from './add/add-department.component';
 import { DepartmentComponent } from './all/department.component';
 import { DepartmentRoutingModule } from './department-routing.module';
 import { UpdateDepartmentComponent } from './update/update-department.component';
-
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports: [
@@ -21,7 +23,10 @@ import { UpdateDepartmentComponent } from './update/update-department.component'
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatSelectModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
     declarations: [
         DepartmentComponent,

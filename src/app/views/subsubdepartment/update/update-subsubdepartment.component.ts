@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
+import { Category } from '../../../models/Category';
+import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
-import { Subsubdepartment } from '../../../models/subsubdepartment';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subdepartment } from '../../../models/subdepartment';
-
 
 @Component({
   templateUrl: './update-subsubdepartment.component.html',
@@ -20,50 +21,40 @@ export class UpdateSubsubdepartmentComponent implements OnInit {
     private swal: SwallService,
 
     private updateSer: UpdateService) { }
-
   subdepClassName = "subsubdepartments";
-  depClassName = "subdepartments/all";
-  item: Subsubdepartment | undefined;
-  form: any = {
-    name: null,
-    dep: null
-  };
+  depClassName = "subdepartments";
+  subdep = this.updateSer.subsubdep;
+  departments: Subdepartment[] = [];
+  subName = new FormControl(this.subdep.name, [Validators.required]);
 
-  items: Subdepartment[] = [];
   ngOnInit() {
+    if (this.updateSer.subsubdep.id == null)
+      this.router.navigate(['/dashboard/subsubdepartments']);
     this.apiSer.getAll(this.depClassName).subscribe(
       data => {
-        this.items = data;
+        this.departments = data;
       });
-
-    if (this.updateSer.subsubdep == null)
-      this.router.navigate(['/dashboard/subsubdepartments']);
-    this.item = this.updateSer.subsubdep;
-    // console.log(this.cat);
-    this.form.name = this.item?.name;
-    this.form.dep = this.item?.subDepartmentDto.id;
-    console.log(this.form.name);
-
   }
 
-  onSubmit(): void {
-    const { name, dep } = this.form;
-    console.log(name);
-    this.item!.name = name;
-    this.item!.subDepartmentDto.id = dep;
 
-    console.log(this.item);
-    this.apiSer.save(this.item, this.subdepClassName).subscribe(
-      data => {
-        this.swal.save('Subsubdepartment Saved!');
-        this.router.navigate(['/dashboard/subsubdepartments']);
+  onSubmit(): void {
+    if (this.subName.hasError('required')) return;
+    this.subdep.name = this.subName.value;
+    // this.cat.manager = this.userControl.value;
+    console.log(this.subdep);
+    this.apiSer.save(this.subdep, this.subdepClassName).subscribe(
+      async data => {
+        this.router.navigate(['/dashboard/subsubdepartments/all']);
+
+        await this.swal.save('subdepartment Updated!')
 
       },
       err => {
-        // this.errorMessage = err.error.message;       
-        this.swal.faild('Save Failed!', '');
+
+        this.swal.faild('Update Failed!', '');
       }
     );
   }
+
 
 }

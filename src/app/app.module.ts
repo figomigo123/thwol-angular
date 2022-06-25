@@ -50,6 +50,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AlertModule } from '@coreui/angular';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormControl, Validators } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -94,6 +98,7 @@ const APP_CONTAINERS = [
     HttpClientModule,
     AlertModule,
     NgxPaginationModule,
+
   ],
   providers: [
     {
@@ -105,7 +110,7 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    Title,    
+    Title,
     authInterceptorProviders,
   ],
   bootstrap: [AppComponent],

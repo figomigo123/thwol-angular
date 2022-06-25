@@ -7,6 +7,7 @@ import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
 import { Department } from 'src/app/models/Department';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './update-department.component.html',
@@ -22,36 +23,23 @@ export class UpdateDepartmentComponent implements OnInit {
     private updateSer: UpdateService) { }
 
   depClassName = "departments";
-  item: Department | undefined;
-  form: any = {
-    name: null
-
-  };
+  item = this.updateSer.dep;
+  depName = new FormControl(this.item.name, [Validators.required]);
 
   ngOnInit() {
-    if (this.updateSer.dep == null)
+    if (this.item?.id == null)
       this.router.navigate(['/dashboard/departments']);
-    this.item = this.updateSer.dep;
-    // console.log(this.cat);
-    this.form.name = this.item?.name;
-    console.log(this.form.name);
-
   }
 
   onSubmit(): void {
-    const { name } = this.form;
-    console.log(name);
-    this.item!.name = name;
-
+    if (this.depName.hasError('required')) return;
+    this.item.name = this.depName.value;
     this.apiSer.save(this.item, this.depClassName).subscribe(
       async data => {
         this.router.navigate(['/dashboard/departments/all']);
-
         await this.swal.save('Department Updated!')
-
       },
       err => {
-
         this.swal.faild('Update Failed!', '');
       }
     );

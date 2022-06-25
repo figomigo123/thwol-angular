@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
-import { Studytype } from '../../../models/studytype';
 import { ApiService } from '../../../services/api.service';
+import { FormControl, Validators } from '@angular/forms';
+import { Studytype } from 'src/app/models/studytype';
 
 
 @Component({
   templateUrl: './add-studytype.component.html'
+
 })
 export class AddStudytypeComponent implements OnInit {
 
@@ -15,22 +17,19 @@ export class AddStudytypeComponent implements OnInit {
     private swal: SwallService,
 
   ) { }
-  studyClassName = "studytypes";
-  iteme: Studytype = new Studytype;
+  className = "studytypes";
+  studytype: Studytype = new Studytype;
+  formControl = new FormControl(this.studytype.name, [Validators.required]);
+
   ngOnInit() {
 
   }
-  form: any = {
-    name: null,
-  };
 
   onSubmit(): void {
-    const { name } = this.form;
-    console.log(name);
-    this.iteme.name = name;
-
-    console.log(this.iteme);
-    this.apiSer.save(this.iteme, this.studyClassName).subscribe(
+    if (this.formControl.hasError('required')) return;
+    this.studytype.name = this.formControl.value;
+    console.log(this.studytype);
+    this.apiSer.save(this.studytype, this.className).subscribe(
       data => {
         this.swal.save('Studytype Saved!');
         this.router.navigate(['/dashboard/studytypes']);

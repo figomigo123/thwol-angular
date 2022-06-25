@@ -56,6 +56,11 @@ export const routes: Routes = [
         path: 'studytypes',
         loadChildren: () => import('./views/studytype/studytype.module').then(m => m.StudytypeModule)
       }
+      ,
+      {
+        path: 'moduls',
+        loadChildren: () => import('./views/modul/modul.module').then(m => m.ModulModule)
+      }
     ]
   },
   { path: '**', component: LoginComponent }

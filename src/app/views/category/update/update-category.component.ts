@@ -1,4 +1,4 @@
-import {  Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
 import { Category } from '../../../models/Category';
@@ -6,10 +6,11 @@ import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
 import { UserService } from '../../../services/user.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-@Component({ 
+@Component({
   templateUrl: './update-category.component.html',
- 
+
 })
 export class UpdateCategoryComponent implements OnInit {
 
@@ -19,50 +20,44 @@ export class UpdateCategoryComponent implements OnInit {
     private swal: SwallService,
 
     private updateSer: UpdateService) { }
-  private manager: User=new User;
+  manager: User = this.updateSer.cat.manager;
   managers: User[] = [];
-  userClassName = "users/all";
+  userClassName = "users";
   catClassName = "categories";
-  cat: Category | undefined;
-  form: any = {
-    name: null,
-    man: null
-  };
+  cat: Category = this.updateSer.cat;;
+  catName = new FormControl(this.cat.name, [Validators.required]);
 
   ngOnInit() {
-    if (this.updateSer.cat == null)
+    if (this.updateSer.cat.id == null)
       this.router.navigate(['/dashboard/categories']);
-    this.cat = this.updateSer.cat;
-   // console.log(this.cat);
-    this.form.name = this.cat?.name;
-    this.form.man = this.cat?.manager.id;
-    console.log(this.form.name);
+
+    // console.log(this.catName.value)
     this.apiSer.getAll(this.userClassName).subscribe(
-      data => {       
+      data => {
         this.managers = data;
       });
   }
- 
+
   onSubmit(): void {
-    const { name,man } = this.form; 
-    console.log(name);
-    this.cat!.name = name;
-    this.manager.id = man
-    this.cat!.manager=this.manager
+    if (this.catName.hasError('required')) return;
+    this.cat.name = this.catName.value;
+    // this.cat.manager = this.userControl.value;
     console.log(this.cat);
-    this.apiSer.save(this.cat,this.catClassName).subscribe(
+    this.apiSer.save(this.cat, this.catClassName).subscribe(
       async data => {
-        this.router.navigate(['/dashboard/categories/all']);     
-        
-      await  this.swal.save('Category Updated!')
+        this.router.navigate(['/dashboard/categories/all']);
+
+        await this.swal.save('Category Updated!')
 
       },
       err => {
-        
+
         this.swal.faild('Update Failed!', '');
       }
     );
   }
 
-
+  getErrorMessage() {
+    return 'You must enter a value';
+  }
 }

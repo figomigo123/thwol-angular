@@ -11,8 +11,9 @@ import { AddCategoryComponent } from './add/add-category.component';
 import { UpdateCategoryComponent } from './update/update-category.component';
 import { IconModule } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
     imports: [
         CommonModule,
@@ -20,7 +21,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatSelectModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
     declarations: [
         CategoryComponent,

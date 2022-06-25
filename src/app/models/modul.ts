@@ -12,15 +12,15 @@ export class Modul {
     modulno!: number;
     credits!: number;
     duration!: number;
-    semesters!: number[];
+    selfStudy!: number;
+    workload!: number;
+    semesters: number[] = [];
     enabled!: boolean;
     opened!: boolean;
-
-
-    category!: Category;
-    department!: Department;
-    subDepartment!: Subdepartment;
-    subsubdepartment!: Subsubdepartment;
-    managers!: User[];
-    studyData!: Studydata[];
+    category: Category = new Category;
+    department: Department = new Department;
+    subDepartment: Subdepartment = new Subdepartment;
+    subsubdepartment: Subsubdepartment = new Subsubdepartment;
+    managers: User[] = [];
+    studyData: Studydata[] = [];
 }

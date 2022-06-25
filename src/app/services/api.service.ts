@@ -17,17 +17,17 @@ export class ApiService {
     return this.http.post(ApiUrl + className, cat, httpOptions);
   }
   del(id: string, className: string) {
-    return this.http.delete(ApiUrl + className+"/" + id, httpOptions);  
+    return this.http.delete(ApiUrl + className + "/" + id, httpOptions);
   }
   getById(id: string, className: string) {
-    return this.http.get(ApiUrl + className + "/" + id, httpOptions);    
+    return this.http.get(ApiUrl + className + "/" + id, httpOptions);
   }
 
-  getPage(className:string,page:number): Observable<any> {
-    return this.http.get(ApiUrl + className+'?page='+page, httpOptions);
+  getPage(className: string, page: number): Observable<any> {
+    return this.http.get(ApiUrl + className + '?page=' + page + '&size=3', httpOptions);
   }
   getAll(className: string): Observable<any> {
-    return this.http.get(ApiUrl + className , httpOptions);
+    return this.http.get(ApiUrl + className + '/all', httpOptions);
   }
 
 }

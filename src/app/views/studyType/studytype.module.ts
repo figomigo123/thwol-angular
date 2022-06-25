@@ -12,7 +12,8 @@ import { AddStudytypeComponent } from './add/add-studytype.component';
 import { StudytypeComponent } from './all/studytype.component';
 import { StudytypeRoutingModule } from './studytype-routing.module';
 import { UpdateStudytypeComponent } from './update/update-studytype.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports: [
@@ -21,7 +22,9 @@ import { UpdateStudytypeComponent } from './update/update-studytype.component';
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        ReactiveFormsModule,
+        MatInputModule
     ],
     declarations: [
         StudytypeComponent,

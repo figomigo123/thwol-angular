@@ -12,6 +12,9 @@ import { UserRoutingModule } from './user-routing.module';
 import { AddUserComponent } from './add/add-user.component';
 import { UserComponent } from './all/user.component';
 import { UpdateUserComponent } from './update/update-user.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { UpdateUserComponent } from './update/update-user.component';
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatSelectModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
     declarations: [
         UserComponent,

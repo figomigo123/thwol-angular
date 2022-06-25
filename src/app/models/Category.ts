@@ -3,10 +3,10 @@ import { User } from "./User";
 
 @Injectable()
 export class Category {
-    id!: string ;
-    name!: string ;
-    manager!: User ;
-    
+    id!: string;
+    name!: string;
+    manager: User = new User;
+
 
 
 }
