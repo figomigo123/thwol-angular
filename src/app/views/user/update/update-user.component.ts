@@ -26,12 +26,16 @@ export class UpdateUserComponent implements OnInit {
 
   lastNameControl = new FormControl(this.user.lastName, [Validators.required]);
   firstNameControl = new FormControl(this.user.firstName, [Validators.required]);
-  emailControl = new FormControl(this.user.email, [Validators.required]);
+  emailControl = new FormControl(this.user.email, [Validators.required, Validators.email]);
 
   onSubmit(): void {
+
+
+
     if (this.lastNameControl.hasError('required') ||
       this.firstNameControl.hasError('required') ||
-      this.emailControl.hasError('required')) return;
+      this.emailControl.hasError('required') ||
+      this.emailControl.hasError('email')) return;
 
     this.user.lastName = this.lastNameControl.value;
     this.user.firstName = this.firstNameControl.value;
