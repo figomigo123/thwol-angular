@@ -1,43 +1,184 @@
 <div class="app-body">
     <main class="main d-flex align-items-left">
-        <div class="container-fluid align-items-left">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="card mx-4">
-                        <div class="card-body p-4">
-                            <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                                <h1>Moduls</h1>
-                                <p class="text-muted">Create new modul</p>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span cInputGroupText>
-                                            <svg cIcon name="cilTags"></svg>
-                                        </span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="modul name" name="name"
-                                        [(ngModel)]="modul.name" required>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span cInputGroupText>
-                                            <svg cIcon name="cilUser"></svg>
-                                        </span>
-                                    </div>
-                                    <select class="form-control" required [(ngModel)]="modul.name" name="man">
-                                        <option value="0" disabled selected="selected">select user type</option>
-                                        <option *ngFor="let m of cats" [value]="m.id" [text]="m.name"></option>
+        <div class="container align-items-left" style="max-width:500px;">
 
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-success">Save</button>
-                            </form>
-                        </div>
-                        <div class="card-footer p-4">
-
-                        </div>
-                    </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <h1>Moduls</h1>
+                <p class="text-muted">Create new Modul</p>
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Modul name</mat-label>
+                        <input matInput placeholder="Modul name" formControlName="name">
+                        <mat-error *ngIf="!form.controls['name'].valid && form.controls['name'].touched">You must enter
+                            a value</mat-error>
+                    </mat-form-field>
                 </div>
-            </div>
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Modul shortcut</mat-label>
+                        <input matInput placeholder="Modul shortcut" formControlName="shortcut">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Modul Number</mat-label>
+                        <input matInput placeholder="Modul Number" matInput #item formControlName="modulno"
+                            (input)="checkModulNumber(item.value)">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Modul credits</mat-label>
+                        <input matInput placeholder="Modul credits" formControlName="credits" type="number" [min]="1">
+                        <mat-error *ngIf="!form.controls['credits'].valid && form.controls['credits'].touched">You must
+                            enter
+                            a value</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Modul duration</mat-label>
+                        <input matInput placeholder="Modul duration" formControlName="duration">
+                        <mat-error *ngIf="!form.controls['duration'].valid && form.controls['duration'].touched">You
+                            must enter
+                            a value</mat-error>
+                    </mat-form-field>
+                </div>
+
+
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul semesters</mat-label>
+                        <mat-select formControlName="semesters" required multiple>
+                            <mat-option *ngFor="let i of [1,2,3,4,5,6,7] " [value]="i">
+                                {{'semester '+i}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!form.controls['semesters'].valid && form.controls['semesters'].touched">
+                            Please
+                            choose Modul semesters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul Category</mat-label>
+                        <mat-select formControlName="category" required>
+                            <mat-option *ngFor="let cat of cats" [value]="cat">
+                                {{cat.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!form.controls['category'].valid && form.controls['category'].touched">Please
+                            choose Modul Category
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul Department</mat-label>
+                        <mat-select formControlName="departmentDto" (selectionChange)="laodSub()" required>
+                            <mat-option *ngFor="let dep of deps" [value]="dep">
+                                {{dep.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error
+                            *ngIf="!form.controls['departmentDto'].valid && form.controls['departmentDto'].touched">
+                            Please
+                            choose Modul Category
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="input-group mb-3" *ngIf="isSub">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul SubDepartment</mat-label>
+                        <mat-select formControlName="subDepartment" (selectionChange)="laodSubsub()" required>
+                            <mat-option *ngFor="let sub of subdeps" [value]="sub">
+                                {{sub.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="input-group mb-3" *ngIf="isSubsub">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul SubsubDepartment</mat-label>
+                        <mat-select formControlName="subsubdepartment" required>
+                            <mat-option *ngFor="let subsub of subsubdeps" [value]="subsub">
+                                {{subsub.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="input-group mb-3">
+                    <mat-form-field appearance="fill" class="form-control">
+                        <mat-label>Choose Modul Managers</mat-label>
+                        <mat-select formControlName="managers" required multiple>
+                            <mat-option *ngFor="let m of users" [value]="m">
+                                {{m.lastName+' '+m.firstName}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <mat-label style="font-size: 24px;">Study Data</mat-label>
+                <div class="input-group mb-3">
+                    <ng-container formArrayName="studyData">
+                        <ng-container *ngFor="let s of studyData.controls; let i = index">
+                            <div class="lesson-form-row" [formGroupName]="i">
+                                <div class="input-group mb-3">
+                                    <mat-form-field appearance="fill" class="form-control">
+                                        <mat-label>Choose Modul SubsubDepartment</mat-label>
+                                        <mat-select formControlName="studyType" required>
+                                            <mat-option *ngFor="let st of studyTypes" [value]="st">
+                                                {{st.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill" class="form-control">
+                                        <mat-label>Study sws</mat-label>
+                                        <input type="number" matInput placeholder="Study sws" formControlName="sws">
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill" class="form-control">
+                                        <mat-label>Study students</mat-label>
+                                        <input type="number" matInput placeholder="Study students"
+                                            formControlName="students">
+                                    </mat-form-field>
+
+                                    <button mat-mini-fab (click)="deletestudy(i)" type="button">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <button color="primary" mat-mini-fab (click)="addstudy()" type="button">
+                    <mat-icon>add</mat-icon>
+                </button>
+
+
+
+
+                <div class="input-group mb-3" style="margin-top: 50px;">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
         </div>
+
     </main>
 </div>
