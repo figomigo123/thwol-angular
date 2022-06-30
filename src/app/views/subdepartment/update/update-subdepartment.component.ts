@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
-import { UserService } from '../../../services/user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Department } from 'src/app/models/Department';
 
@@ -14,7 +13,6 @@ import { Department } from 'src/app/models/Department';
 export class UpdateSubdepartmentComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
-    private userSer: UserService,
     public router: Router,
     private swal: SwallService,
 

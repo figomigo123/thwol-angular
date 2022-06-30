@@ -11,7 +11,11 @@ import { AddModulComponent } from './add/add-modul.component';
 import { UpdateModulComponent } from './update/update-modul.component';
 import { IconModule } from '@coreui/icons-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     imports: [
@@ -20,7 +24,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
         BsDropdownModule.forRoot(),
         FormsModule,
         IconModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        MatSelectModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatButtonModule,
     ],
     declarations: [
         ModulComponent,

@@ -1,46 +1,31 @@
 <!--sidebar-->
-<c-sidebar
-  #sidebar="cSidebar"
-  class="d-print-none sidebar sidebar-fixed"
-  id="sidebar"
-  visible
->
-  <c-sidebar-brand
-    [brandFull]="{
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible>
+  <c-sidebar-brand [brandFull]="{
       src: 'assets/myimages/favicon.png',
       width: 50,
       height: 46,
       alt: 'TH WOL'
-    }"
-    TH
-    [brandNarrow]="{
+    }" TH [brandNarrow]="{
       src: 'assets/myimages/favicon.png',
       width: 25,
       height: 25,
       alt: 'TH WOL'
-    }"
-    routerLink="./"
-  >
+    }" routerLink="./">
   </c-sidebar-brand>
-    <perfect-scrollbar [config]="perfectScrollbarConfig">
-  <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
-  <c-sidebar-nav
-    [navItems]="navItems"
-  >
-  </c-sidebar-nav>
-    </perfect-scrollbar>
-    
-  <c-sidebar-toggler
-    *ngIf="!sidebar.narrow"
-    toggle="unfoldable"
-    cSidebarToggle="sidebar"
-  ></c-sidebar-toggler>
+  <perfect-scrollbar [config]="perfectScrollbarConfig">
+    <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
+    <c-sidebar-nav [navItems]="navItems">
+    </c-sidebar-nav>
+  </perfect-scrollbar>
+
+  <c-sidebar-toggler *ngIf="!sidebar.narrow" toggle="unfoldable" cSidebarToggle="sidebar"></c-sidebar-toggler>
 </c-sidebar>
 
 <!--main-->
 <div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
   <!--app-header-->
-  <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar"></app-default-header>
+  <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar"
+    [userType]="userType"></app-default-header>
   <!--app-body-->
   <div class="body flex-grow-1 px-3">
     <c-container breakpoint="lg" class="h-auto">

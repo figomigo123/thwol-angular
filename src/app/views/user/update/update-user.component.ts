@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
-import { Category } from '../../../models/Category';
-import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
-import { UserService } from '../../../services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

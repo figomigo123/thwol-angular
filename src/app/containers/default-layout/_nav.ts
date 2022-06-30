@@ -124,7 +124,7 @@ export const navItems: INavData[] =
     { name: '', attributes: { disabled: true } },
     {
       name: 'LogOut',
-      url: '',
+      url: 'logout',
       icon: 'icon-puzzle'
     },
   ];

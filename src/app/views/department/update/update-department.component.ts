@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwallService } from '../../../services/swall.service';
-import { Category } from '../../../models/Category';
-import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
-import { UserService } from '../../../services/user.service';
-import { Department } from 'src/app/models/Department';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +12,6 @@ import { FormControl, Validators } from '@angular/forms';
 export class UpdateDepartmentComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
-    private userSer: UserService,
     public router: Router,
     private swal: SwallService,
 

@@ -12,7 +12,7 @@ export const navItems2: INavData[] =
       },
       {
         name: 'Add Modul',
-        url: 'Moduls/add',
+        url: 'moduls/add',
         icon: 'icon-puzzle'
       },
 
@@ -22,7 +22,7 @@ export const navItems2: INavData[] =
   { name: '', attributes: { disabled: true } },
   {
     name: 'LogOut',
-    url: '',
+    url: 'logout',
     icon: 'icon-puzzle'
   },
   ];

@@ -5,7 +5,6 @@ import { Category } from '../../../models/Category';
 import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
-import { UserService } from '../../../services/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +14,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UpdateCategoryComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
-    private userSer: UserService,
     public router: Router,
     private swal: SwallService,
 

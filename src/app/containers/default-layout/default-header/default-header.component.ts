@@ -9,9 +9,12 @@ import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 })
 export class DefaultHeaderComponent extends HeaderComponent {
 
-  @Input() sidebarId: string = "sidebar"; 
-
+  @Input() sidebarId: string = "sidebar";
+  @Input() userType = "";
   constructor(private classToggler: ClassToggleService) {
     super();
   }
+
+
+
 }

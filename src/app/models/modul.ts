@@ -18,7 +18,7 @@ export class Modul {
     enabled!: boolean;
     opened!: boolean;
     category: Category = new Category;
-    department: Department = new Department;
+    departmentDto: Department = new Department;
     subDepartment: Subdepartment = new Subdepartment;
     subsubdepartment: Subsubdepartment = new Subsubdepartment;
     managers: User[] = [];

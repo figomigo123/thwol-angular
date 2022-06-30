@@ -5,7 +5,6 @@ import { Modul } from '../../../models/Modul';
 import { User } from '../../../models/User';
 import { ApiService } from '../../../services/api.service';
 import { UpdateService } from '../../../services/update.service';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   templateUrl: './update-modul.component.html',
@@ -14,7 +13,6 @@ import { UserService } from '../../../services/user.service';
 export class UpdateModulComponent implements OnInit {
 
   constructor(private apiSer: ApiService,
-    private userSer: UserService,
     public router: Router,
     private swal: SwallService,
 

@@ -50,8 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { AlertModule } from '@coreui/angular';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormControl, Validators } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
+import { LogoutComponent } from './views/logout/logout.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -65,7 +64,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent,],
+  declarations: [AppComponent, ...APP_CONTAINERS, LoginComponent, LogoutComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

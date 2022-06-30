@@ -3,21 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayoutComponent } from './containers';
 import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
 
 export const routes: Routes = [
   {
     path: 'dashboard',
-    redirectTo: 'dashboard/dashboard',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
 
   },
   {
-    path: '',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
+    path: 'login', component: LoginComponent,
   },
+
   {
     path: 'dashboard',
     component: DefaultLayoutComponent,
@@ -61,6 +59,12 @@ export const routes: Routes = [
         path: 'moduls',
         loadChildren: () => import('./views/modul/modul.module').then(m => m.ModulModule)
       }
+      ,
+      {
+        path: 'logout',
+        loadChildren: () => import('./views/logout/logout.module').then(m => m.LogoutModule)
+      }
+
     ]
   },
   { path: '**', component: LoginComponent }
