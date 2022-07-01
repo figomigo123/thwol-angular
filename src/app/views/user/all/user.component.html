@@ -11,6 +11,7 @@
                             <th>LastName</th>
                             <th>FirstName</th>
                             <th>Email</th>
+                            <th>Enabeld</th>
                             <th>Role</th>
                             <th>Update - Delete</th>
                         </tr>
@@ -23,34 +24,34 @@
                   totalItems: count
                 };
           let i = index">
-                            <td>{{user.lastName}}</td>                            
+                            <td>{{user.lastName}}</td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.email}}</td>
+                            <td>{{user.enabled}}</td>
                             <td>{{user.roles[0].replace("ROLE_","")}}</td>
-                        <td>
-                            <button class="btn btn-link" (click)="update(user)">
-                                <span cInputGroupText>
-                                    <svg cIcon name="cilPencil" style="color: red;"></svg>
-                                </span>
-                            </button>
-                            -
-                            <button class="btn btn-link" (click)="del(user)">
-                                <span cInputGroupText>
-                                    <svg cIcon name="cilTrash" style="color: red;"></svg>
-                                </span>
-                            </button>
-                        </td>
+                            <td>
+                                <button class="btn btn-link" (click)="update(user)">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilPencil" style="color: red;"></svg>
+                                    </span>
+                                </button>
+                                -
+                                <button class="btn btn-link" (click)="del(user)">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilTrash" style="color: red;"></svg>
+                                    </span>
+                                </button>
+                            </td>
                         </tr>
 
                     </tbody>
                 </table>
-                
-                    <div class="d-flex justify-content-center">
-                        <pagination-controls previousLabel="Prev" nextLabel="Next" 
-                        (pageChange)="onTableDataChange($event)">
-                        </pagination-controls>
-                    </div>
-                
+
+                <div class="d-flex justify-content-center">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+
             </div>
         </div>
     </div>

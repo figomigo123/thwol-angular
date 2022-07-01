@@ -4,7 +4,7 @@ import { User } from "./User";
 @Injectable()
 export class Category {
     id!: string;
-    name!: string;
+    name: string | undefined;
     manager: User = new User;
 
 

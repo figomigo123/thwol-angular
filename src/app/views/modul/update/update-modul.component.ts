@@ -19,7 +19,7 @@ export class UpdateModulComponent implements OnInit {
     private updateSer: UpdateService) { }
   private manager: User = new User;
   managers: User[] = [];
-  userClassName = "users/all";
+  userClassName = "users";
   modulClassName = "categories";
   modul: Modul | undefined;
   form: any = {

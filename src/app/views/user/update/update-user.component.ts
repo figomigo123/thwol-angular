@@ -19,15 +19,24 @@ export class UpdateUserComponent implements OnInit {
   user = this.updateSer.user;
   ngOnInit() {
     if (this.user.id == null) this.router.navigate(['/dashboard/users']);
+    console.log("befor checked:" + this.user.enabled)
+
   }
 
   lastNameControl = new FormControl(this.user.lastName, [Validators.required]);
   firstNameControl = new FormControl(this.user.firstName, [Validators.required]);
   emailControl = new FormControl(this.user.email, [Validators.required, Validators.email]);
 
+  setAll(checked: boolean) {
+    console.log("checked:" + checked)
+
+  }
+
+
+
   onSubmit(): void {
 
-
+    console.log("onSubmit:" + this.user.roles)
 
     if (this.lastNameControl.hasError('required') ||
       this.firstNameControl.hasError('required') ||
@@ -40,7 +49,7 @@ export class UpdateUserComponent implements OnInit {
 
 
 
-    this.apiSer.save(this.user, this.userClassName).subscribe(
+    this.apiSer.update(this.user, this.userClassName).subscribe(
       data => {
         this.swal.save('User Saved!');
         this.router.navigate(['/dashboard/users']);

@@ -15,6 +15,7 @@ import { UpdateUserComponent } from './update/update-user.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { MatInputModule } from '@angular/material/input';
         NgxPaginationModule,
         MatSelectModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatCheckboxModule,
+
     ],
     declarations: [
         UserComponent,

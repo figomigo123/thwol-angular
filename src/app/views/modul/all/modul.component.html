@@ -9,6 +9,15 @@
                     <thead>
                         <tr>
                             <th>Modul</th>
+                            <th>Shortcut</th>
+                            <th>Number</th>
+                            <th>Credits</th>
+                            <th>Duration</th>
+                            <th>Semesters</th>
+                            <th>Categor</th>
+                            <th>Deparement</th>
+                            <th>Managers</th>
+                            <th>Studys</th>
 
                             <th>Update - Delete</th>
                         </tr>
@@ -22,6 +31,28 @@
                 };
           let i = index">
                             <td>{{modul.name}}</td>
+                            <td>{{modul.shortcut}}</td>
+                            <td>{{modul.modulno}}</td>
+                            <td>{{modul.credits}}</td>
+                            <td>{{modul.duration}}</td>
+                            <td>{{modul.semesters}}</td>
+                            <td>{{(modul.category!=null)?modul.category.name :'' }}</td>
+                            <td>
+                                {{(modul.subsubdepartment!=null)?modul.subsubdepartment.name :'' }}
+                                {{(modul.subDepartment!=null)?modul.subDepartment.name :'' }}
+                                {{(modul.departmentDto!=null)?modul.departmentDto.name :'' }}
+
+                            </td>
+
+                            <td>
+                                <div *ngFor="let m of modul.managers">
+                                    {{m.lastName}}</div>
+                            </td>
+                            <td>
+                                <div *ngFor="let s of modul.studyData">
+                                    {{s.studyType.name}}</div>
+                            </td>
+
 
 
                             <td>

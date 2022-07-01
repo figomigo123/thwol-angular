@@ -16,6 +16,9 @@ export class ApiService {
   save(cat: any, className: string) {
     return this.http.post(ApiUrl + className, cat, httpOptions);
   }
+  update(cat: any, className: string) {
+    return this.http.put(ApiUrl + className, cat, httpOptions);
+  }
   del(id: string, className: string) {
     return this.http.delete(ApiUrl + className + "/" + id, httpOptions);
   }

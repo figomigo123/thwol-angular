@@ -27,7 +27,11 @@
                     </mat-form-field>
                 </div>
 
-
+                <div class="input-group mb-3">
+                    <mat-checkbox [checked]="user.enabled" (change)="user.enabled=($event.checked)">
+                        User Enabeld
+                    </mat-checkbox>
+                </div>
 
 
                 <div class="input-group mb-3">
@@ -42,13 +46,9 @@
                                 PROFESSOR
                             </mat-option>
                         </mat-select>
-
-
                     </mat-form-field>
-
-
-
                 </div>
+
                 <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
