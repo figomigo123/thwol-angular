@@ -66,13 +66,13 @@ export class AddModulComponent implements OnInit {
     this.apiSer.getAll(this.studyTypeClassName).subscribe(data => { this.studyTypes = data; });
     this.apiSer.getAll(this.userClassName).subscribe(data => { this.users = data; });
   }
-  laodSub() {
+  laodSub(dep: Department) {
     this.isSub = true;
-    this.apiSer.getAll(this.subdepClassName).subscribe(data => { this.subdeps = data; });
+    this.apiSer.getDepChild(this.subdepClassName, dep.id).subscribe(data => { this.subdeps = data; });
   }
-  laodSubsub() {
+  laodSubsub(subDep: Subdepartment) {
     this.isSubsub = true;
-    this.apiSer.getAll(this.subsubdepClassName).subscribe(data => { this.subsubdeps = data; });
+    this.apiSer.getSubDepChild(this.subsubdepClassName, subDep.id).subscribe(data => { this.subsubdeps = data; });
   }
   onSubmit(): void {
     console.log(this.studyData.length);

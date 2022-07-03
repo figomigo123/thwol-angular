@@ -85,8 +85,8 @@
                 <div class="input-group mb-3">
                     <mat-form-field appearance="fill" class="form-control">
                         <mat-label>Choose Modul Department</mat-label>
-                        <mat-select formControlName="departmentDto" (selectionChange)="laodSub()" required>
-                            <mat-option *ngFor="let dep of deps" [value]="dep">
+                        <mat-select formControlName="departmentDto">
+                            <mat-option *ngFor="let dep of deps" [value]="dep" (click)="laodSub(dep)">
                                 {{dep.name}}
                             </mat-option>
                         </mat-select>
@@ -102,8 +102,8 @@
                 <div class="input-group mb-3" *ngIf="isSub">
                     <mat-form-field appearance="fill" class="form-control">
                         <mat-label>Choose Modul SubDepartment</mat-label>
-                        <mat-select formControlName="subDepartment" (selectionChange)="laodSubsub()" required>
-                            <mat-option *ngFor="let sub of subdeps" [value]="sub">
+                        <mat-select formControlName="subDepartment">
+                            <mat-option *ngFor="let sub of subdeps" [value]="sub" (click)="laodSubsub(sub)">
                                 {{sub.name}}
                             </mat-option>
                         </mat-select>

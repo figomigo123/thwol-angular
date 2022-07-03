@@ -1,9 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Category } from '../models/Category';
 import { ApiUrl } from './server-url';
-const serverURL = ApiUrl + 'categories/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -11,6 +9,21 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
+
+  params = new HttpParams();
+
+
+
+  getSubDepChild(className: string, parentId: string): Observable<any> {
+    this.params.delete;
+    this.params.append('subDepartmentId', parentId);
+    return this.http.get(ApiUrl + className + '/subDepartment?subDepartmentId=' + parentId, httpOptions);
+  }
+  getDepChild(className: string, depId: string): Observable<any> {
+
+    console.log("depid:" + depId);
+    return this.http.get(ApiUrl + className + '/department?departmentId=' + depId, httpOptions);
+  }
   constructor(private http: HttpClient) { }
 
   save(cat: any, className: string) {
