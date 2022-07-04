@@ -38,10 +38,13 @@
                             <td>{{modul.semesters}}</td>
                             <td>{{(modul.category!=null)?modul.category.name :'' }}</td>
                             <td>
-                                {{(modul.subsubdepartment!=null)?modul.subsubdepartment.name :'' }}
+
                                 {{(modul.subDepartment!=null)?modul.subDepartment.name :'' }}
                                 {{(modul.departmentDto!=null)?modul.departmentDto.name :'' }}
-
+                                <div *ngFor="let m of modul.subsubdepartments">
+                                    {{m.subSubDepartment.name}},
+                                    {{m.modulType}}
+                                </div>
                             </td>
 
                             <td>

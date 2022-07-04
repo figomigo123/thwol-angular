@@ -115,7 +115,7 @@
                 <div class="input-group mb-3" *ngIf="isSubsub">
                     <mat-form-field appearance="fill" class="form-control">
                         <mat-label>Choose Modul SubsubDepartment</mat-label>
-                        <mat-select [compareWith]="compareFunction" formControlName="subsubdepartment" required>
+                        <mat-select [compareWith]="compareFunction" formControlName="" required>
                             <mat-option *ngFor="let subsub of subsubdeps" [value]="subsub">
                                 {{subsub.name}}
                             </mat-option>

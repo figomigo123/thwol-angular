@@ -52,7 +52,7 @@ export class UpdateModulComponent implements OnInit {
     category: new FormControl(this.modul.category, Validators.required),
     departmentDto: new FormControl(this.modul.departmentDto, Validators.required),
     subDepartment: new FormControl(this.modul.subDepartment || new Subdepartment),
-    subsubdepartment: new FormControl(this.modul.subsubdepartment || new Subsubdepartment),
+    subsubdepartment: new FormControl(this.modul.subsubdepartments || new Subsubdepartment),
     managers: new FormControl(this.modul.managers),
     studyData: this.fb.array([], [Validators.minLength(1), Validators.required])
   });
@@ -64,6 +64,16 @@ export class UpdateModulComponent implements OnInit {
   ngOnInit() {
     if (this.updateSer.modul.id == null) this.router.navigate(['/dashboard/moduls']);
     this.isSubsub = this.modul.subDepartment != null;
+    this.modul.studyData.forEach(sd => {
+      const lform = this.fb.group({
+        studyType: new FormControl(sd.studyType),
+        sws: new FormControl(sd.sws),
+        students: new FormControl(sd.students),
+      });
+      this.studyData.push(lform);
+    });
+
+
     this.addstudy();
     this.apiSer.getAll(this.catClassName).subscribe(data => { this.cats = data; });
     this.apiSer.getAll(this.depClassName).subscribe(data => { this.deps = data; });

@@ -2,7 +2,7 @@ import { Category } from "./Category";
 import { Department } from "./Department";
 import { Studydata } from "./studydata";
 import { Subdepartment } from "./subdepartment";
-import { Subsubdepartment } from "./subsubdepartment";
+import { SubSubDepData } from "./subSubDepData";
 import { User } from "./User";
 
 export class Modul {
@@ -20,7 +20,7 @@ export class Modul {
     category: Category = new Category;
     departmentDto: Department = new Department;
     subDepartment: Subdepartment = new Subdepartment;
-    subsubdepartment: Subsubdepartment = new Subsubdepartment;
+    subsubdepartments: SubSubDepData[] = [];
     managers: User[] = [];
     studyData: Studydata[] = [];
 }

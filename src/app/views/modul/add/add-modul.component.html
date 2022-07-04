@@ -99,7 +99,7 @@
                 </div>
 
 
-                <div class="input-group mb-3" *ngIf="isSub">
+                <div class="input-group mb-3">
                     <mat-form-field appearance="fill" class="form-control">
                         <mat-label>Choose Modul SubDepartment</mat-label>
                         <mat-select formControlName="subDepartment">
@@ -111,18 +111,43 @@
                 </div>
 
 
-                <div class="input-group mb-3" *ngIf="isSubsub">
-                    <mat-form-field appearance="fill" class="form-control">
-                        <mat-label>Choose Modul SubsubDepartment</mat-label>
-                        <mat-select formControlName="subsubdepartment" required>
-                            <mat-option *ngFor="let subsub of subsubdeps" [value]="subsub">
-                                {{subsub.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-
+                <mat-label style="font-size: 24px;">SubSubDepartment Data</mat-label>
                 <div class="input-group mb-3">
+                    <ng-container formArrayName="subsubdepartments">
+                        <ng-container *ngFor="let sub of subsubdepartment.controls; let k = index">
+                            <div class="lesson-form-row" [formGroupName]="k">
+                                <div class="input-group mb-3">
+                                    <mat-form-field appearance="fill" class="form-control">
+                                        <mat-label>Choose Modul SubSubDepartment</mat-label>
+                                        <mat-select formControlName="subSubDepartment">
+                                            <mat-option *ngFor="let sub of subsubdeps" [value]="sub">
+                                                {{sub.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill" class="form-control">
+                                        <mat-label>Choose Modul Type</mat-label>
+                                        <mat-select formControlName="modulType">
+                                            <mat-option [value]="'OPTIONAL'">OPTIONAL </mat-option>
+                                            <mat-option [value]="'SPECIAL'"> SPECIAL</mat-option>
+                                            <mat-option [value]="'MANDATORY'">MANDATORY </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <button mat-mini-fab (click)="deletesubsubdepartment(k)" type="button">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <button color="primary" mat-mini-fab (click)="addsubsubdepartment()" type="button">
+                    <mat-icon>add</mat-icon>
+                </button>
+
+                <div class="input-group mb-3" style="margin-top: 50px;">
                     <mat-form-field appearance="fill" class="form-control">
                         <mat-label>Choose Modul Managers</mat-label>
                         <mat-select formControlName="managers" required multiple>

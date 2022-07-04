@@ -43,7 +43,7 @@ export class AddModulComponent implements OnInit {
     category: new FormControl('', Validators.required),
     departmentDto: new FormControl(new Department, Validators.required),
     subDepartment: new FormControl(new Subdepartment),
-    subsubdepartment: new FormControl(new Subsubdepartment),
+    subsubdepartments: this.fb.array([]),
     managers: new FormControl([]),
     studyData: this.fb.array([], [Validators.minLength(1), Validators.required])
   });
@@ -61,6 +61,7 @@ export class AddModulComponent implements OnInit {
 
   ngOnInit() {
     this.addstudy();
+    this.addsubsubdepartment();
     this.apiSer.getAll(this.catClassName).subscribe(data => { this.cats = data; });
     this.apiSer.getAll(this.depClassName).subscribe(data => { this.deps = data; });
     this.apiSer.getAll(this.studyTypeClassName).subscribe(data => { this.studyTypes = data; });
@@ -85,11 +86,10 @@ export class AddModulComponent implements OnInit {
       data => {
         this.swal.save('modul Saved!');
         this.router.navigate(['/dashboard/moduls']);
-
       },
       err => {
         // this.errorMessage = err.error.message;       
-        this.swal.faild('Save Failed!', '');
+        this.swal.faild('Save Failed!', err.error.message);
       }
     );
 
@@ -98,6 +98,22 @@ export class AddModulComponent implements OnInit {
   checkModulName(value: string) { console.log("checkModulNumber:" + value); }
   checkModulNumber(value: string) { console.log("checkModulNumber:" + value); }
   checkModulSortcut(value: string) { console.log("checkModulNumber:" + value); }
+  get subsubdepartment() {
+    return this.form.controls["subsubdepartments"] as FormArray;
+  }
+
+  addsubsubdepartment() {
+    const lform = this.fb.group({
+      subSubDepartment: new FormControl(new Subsubdepartment),
+      modulType: new FormControl(''),
+    });
+    this.subsubdepartment.push(lform);
+  }
+
+  deletesubsubdepartment(index: number) {
+    this.subsubdepartment.removeAt(index);
+  }
+
   get studyData() {
     return this.form.controls["studyData"] as FormArray;
   }
@@ -114,4 +130,6 @@ export class AddModulComponent implements OnInit {
   deletestudy(lessonIndex: number) {
     this.studyData.removeAt(lessonIndex);
   }
+
+
 }
