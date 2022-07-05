@@ -119,7 +119,23 @@ export const navItems: INavData[] =
         },
 
       ]
-    },
+    }
+    , {
+      name: 'Reports',
+
+      children: [
+        {
+          name: 'Moduls',
+          url: 'reports',
+          icon: 'icon-puzzle'
+        }
+
+      ]
+    }
+
+
+
+    ,
 
     { name: '', attributes: { disabled: true } },
     {

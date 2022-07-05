@@ -61,6 +61,11 @@ export const routes: Routes = [
       }
       ,
       {
+        path: 'reports',
+        loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
+      }
+      ,
+      {
         path: 'logout',
         loadChildren: () => import('./views/logout/logout.module').then(m => m.LogoutModule)
       }
