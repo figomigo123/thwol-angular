@@ -59,6 +59,9 @@ export class UpdateModulComponent implements OnInit {
   compareFunction(o1: any, o2: any) {
     return (o1.name == o2.name && o1.id == o2.id);
   }
+  compareFunction2(o1: string, o2: string) {
+    return (o1 == o2);
+  }
 
   ngOnInit() {
     if (this.updateSer.modul.id == null) this.router.navigate(['/dashboard/moduls']);

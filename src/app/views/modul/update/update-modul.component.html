@@ -130,7 +130,7 @@
                                     </mat-form-field>
                                     <mat-form-field appearance="fill" class="form-control">
                                         <mat-label>Choose Modul Type</mat-label>
-                                        <mat-select [compareWith]="compareFunction" formControlName="modulType">
+                                        <mat-select [compareWith]="compareFunction2" formControlName="modulType">
                                             <mat-option *ngFor="let mt of modulTypes" [value]="mt">
                                                 {{mt}}
                                             </mat-option>
