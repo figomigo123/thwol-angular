@@ -46,4 +46,11 @@ export class ApiService {
     return this.http.get(ApiUrl + className + '/all', httpOptions);
   }
 
+  getStatistics(type: string): any {
+    return this.http.get(ApiUrl + 'statistics/' + type, httpOptions);
+  }
+
+
+
+
 }

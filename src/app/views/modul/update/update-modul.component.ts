@@ -32,7 +32,7 @@ export class UpdateModulComponent implements OnInit {
   studyTypeClassName = "studytypes";
   userClassName = "users";
 
-
+  modulTypes = ['OPTIONAL', 'SPECIAL', 'MANDATORY'];
   cats: Category[] = [];
   deps: Department[] = [];
   subdeps: Subdepartment[] = [];
@@ -40,8 +40,7 @@ export class UpdateModulComponent implements OnInit {
   studyTypes: Studytype[] = [];
   users: User[] = [];
   public modul: Modul = this.updateSer.modul;
-  isSub = true;
-  isSubsub = false;
+
   form = this.fb.group({
     name: new FormControl(this.modul.name, Validators.required),
     shortcut: new FormControl(this.modul.shortcut),
@@ -52,7 +51,7 @@ export class UpdateModulComponent implements OnInit {
     category: new FormControl(this.modul.category, Validators.required),
     departmentDto: new FormControl(this.modul.departmentDto, Validators.required),
     subDepartment: new FormControl(this.modul.subDepartment || new Subdepartment),
-    subsubdepartment: new FormControl(this.modul.subsubdepartments || new Subsubdepartment),
+    subsubdepartments: this.fb.array([]),
     managers: new FormControl(this.modul.managers),
     studyData: this.fb.array([], [Validators.minLength(1), Validators.required])
   });
@@ -63,7 +62,14 @@ export class UpdateModulComponent implements OnInit {
 
   ngOnInit() {
     if (this.updateSer.modul.id == null) this.router.navigate(['/dashboard/moduls']);
-    this.isSubsub = this.modul.subDepartment != null;
+
+    this.modul.subsubdepartments.forEach(sd => {
+      const lform = this.fb.group({
+        subSubDepartment: new FormControl(sd.subSubDepartment),
+        modulType: new FormControl(sd.modulType),
+      });
+      this.subsubdepartment.push(lform);
+    });
     this.modul.studyData.forEach(sd => {
       const lform = this.fb.group({
         studyType: new FormControl(sd.studyType),
@@ -72,9 +78,6 @@ export class UpdateModulComponent implements OnInit {
       });
       this.studyData.push(lform);
     });
-
-
-    this.addstudy();
     this.apiSer.getAll(this.catClassName).subscribe(data => { this.cats = data; });
     this.apiSer.getAll(this.depClassName).subscribe(data => { this.deps = data; });
     this.apiSer.getAll(this.studyTypeClassName).subscribe(data => { this.studyTypes = data; });
@@ -86,40 +89,44 @@ export class UpdateModulComponent implements OnInit {
 
   }
   laodSub(dep: Department) {
-    console.log('dep:' + dep.name)
-    this.isSub = true;
     this.apiSer.getDepChild(this.subdepClassName, dep.id).subscribe(data => { this.subdeps = data; console.log(data) });
-
-
   }
   laodSubsub(subdep: Subdepartment) {
-    this.isSubsub = true;
     this.apiSer.getSubDepChild(this.subsubdepClassName, subdep.id).subscribe(data => { this.subsubdeps = data; });
   }
   onSubmit(): void {
-    console.log(this.studyData.length);
-    console.log(this.form.value);
-    if (this.form.valid)
-      console.log("good");
-    else console.log("bad");
-
     this.apiSer.save(this.form.value, this.modulClassName).subscribe(
       data => {
         this.swal.save('modul Saved!');
         this.router.navigate(['/dashboard/moduls']);
-
       },
       err => {
         // this.errorMessage = err.error.message;       
         this.swal.faild('Save Failed!', '');
       }
     );
-
-
   }
   checkModulName(value: string) { console.log("checkModulNumber:" + value); }
   checkModulNumber(value: string) { console.log("checkModulNumber:" + value); }
   checkModulSortcut(value: string) { console.log("checkModulNumber:" + value); }
+
+  get subsubdepartment() {
+    return this.form.controls["subsubdepartments"] as FormArray;
+  }
+
+  addsubsubdepartment() {
+    const lform = this.fb.group({
+      subSubDepartment: new FormControl(new Subsubdepartment),
+      modulType: new FormControl(''),
+    });
+    this.subsubdepartment.push(lform);
+  }
+
+  deletesubsubdepartment(index: number) {
+    this.subsubdepartment.removeAt(index);
+  }
+
+
   get studyData() {
     return this.form.controls["studyData"] as FormArray;
   }
